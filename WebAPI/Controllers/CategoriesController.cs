@@ -7,8 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Caching;
 using System.Threading.Tasks;
+using Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Caching.Memory;
+using MemoryCache = System.Runtime.Caching.MemoryCache;
 
 namespace WebAPI.Controllers
 {
@@ -26,12 +30,27 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult GetCategories()
         {
-            var result = _categoryService.GetCategories("https://halfiyatlaripublicdata.ibb.gov.tr/api/HalManager/getCategories");
-            if (result.ResponseStatus != true)
+            var cache = MemoryCache.Default;
+            var categoryList = new List<Category>();
+            categoryList = (List<Category>)cache.Get("categoryList");
+     
+            if (categoryList == null)
             {
-                return BadRequest(result.Message);
+                categoryList = _categoryService
+                    .GetCategories("https://halfiyatlaripublicdata.ibb.gov.tr/api/HalManager/getCategories").Results;
+                System.Diagnostics.Debug.WriteLine(
+                    "Data were not in the cache.I got the from data source SLOW at " + DateTime.Now);
+                var policy = new CacheItemPolicy().AbsoluteExpiration = DateTime.Now.AddMinutes(5);
+                cache.Set("categoryList", categoryList, policy);
+                return Ok(categoryList);
             }
-            return Ok(result);
+            else
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    "Data were in the cache.I got the from data source FAST at " + DateTime.Now);
+            }
+
+            return Ok(categoryList);
         }
 
 
