@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\ceyda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ceyda\\AppData\\Roaming\\NuGet\\NuGet.Config",

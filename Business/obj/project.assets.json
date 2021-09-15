@@ -405,11 +405,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Business\\Business.csproj",
+      "projectUniqueName": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Business\\Business.csproj",
       "projectName": "Business",
-      "projectPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Business\\Business.csproj",
+      "projectPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Business\\Business.csproj",
       "packagesPath": "C:\\Users\\ceyda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Business\\obj\\",
+      "outputPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ceyda\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -426,11 +426,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Core\\Core.csproj"
+            "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Core\\Core.csproj"
             },
-            "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Entities\\Entities.csproj"
+            "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Entities\\Entities.csproj"
             }
           }
         }

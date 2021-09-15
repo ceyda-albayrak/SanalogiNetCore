@@ -10,6 +10,6 @@ namespace Business.Abstract
 {
     public interface ICategoryService
     {
-        IResult<List<Category>> GetCategories(string url);
+        IDataResult<List<Category>> GetCategories();
     }
 }

@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace Core.Utilities.Results
-{
-    public class Result<T>:IResult<T>
+{ 
+    public class Result : IResult
     {
-        [JsonConstructor]
-        public Result(bool responseStatus, string errorGuid, string message,T results )
+        
+         
+        public Result(bool success, string message):this(success)
         {
-            ResponseStatus = responseStatus;
-            ErrorGUID = errorGuid;
             Message = message;
-            Results = results;
+            Succes = success;
         }
+        public Result(bool success)
+        {
+            Succes = success;
+        }
+        public bool Succes { get; }
 
-        public bool ResponseStatus { get; }
-        public string ErrorGUID { get; }
-        public string Message { get; }
-        public T Results { get; }
-
+        public string Message { get;  }
     }
 }

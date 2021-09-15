@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kV1tZqg3kyoZZgnd4RLYmBmtdX0gRgGVREoonKuqFQg0xUflnZ4+srOQCDHU+25ZYAKUblORbuBZw59eDBxUcA==",
+  "dgSpecHash": "+3Q7dOfR/0mX1mcvT0HKg1REzlSUGR/nMYjtC7RUvsN6cqY4ch1USPd5bNS3za2XT1lA1rIbS+czigFlnU2jHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Business\\Business.csproj",
+  "projectFilePath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Business\\Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ceyda\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
     "C:\\Users\\ceyda\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",

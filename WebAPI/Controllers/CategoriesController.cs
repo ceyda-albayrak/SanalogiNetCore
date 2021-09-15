@@ -13,11 +13,10 @@ using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Memory;
 using MemoryCache = System.Runtime.Caching.MemoryCache;
+using Core.Utilities.Results;
 
 namespace WebAPI.Controllers
 {
-   
-
     public class CategoriesController : ControllerBase
     {
         private ICategoryService _categoryService;
@@ -31,25 +30,25 @@ namespace WebAPI.Controllers
         public IActionResult GetCategories()
         {
             var cache = MemoryCache.Default;
-            var categoryList = new List<Category>();
-            categoryList = (List<Category>)cache.Get("categoryList");
-     
+            var categoryList = (IDataResult<List<Category>>)cache.Get("categoryList");
             if (categoryList == null)
             {
-                categoryList = _categoryService
-                    .GetCategories("https://halfiyatlaripublicdata.ibb.gov.tr/api/HalManager/getCategories").Results;
+                //
+                categoryList = _categoryService.GetCategories();
                 System.Diagnostics.Debug.WriteLine(
                     "Data were not in the cache.I got the from data source SLOW at " + DateTime.Now);
-                var policy = new CacheItemPolicy().AbsoluteExpiration = DateTime.Now.AddMinutes(5);
-                cache.Set("categoryList", categoryList, policy);
-                return Ok(categoryList);
+                if (categoryList != null && categoryList.Data.Count > 0)
+                {
+                    var policy = new CacheItemPolicy().AbsoluteExpiration = DateTime.Now.AddMinutes(5);
+                    cache.Set("categoryList", categoryList, policy);
+                    return Ok(categoryList);
+                }
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine(
                     "Data were in the cache.I got the from data source FAST at " + DateTime.Now);
             }
-
             return Ok(categoryList);
         }
 

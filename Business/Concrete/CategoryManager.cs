@@ -8,6 +8,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Constant;
 using Core.Utilities.Results;
 using Core.Utulities;
 using Entities;
@@ -22,30 +23,38 @@ namespace Business
     public class CategoryManager : ICategoryService
     {
         private static readonly CircuitBreakerPolicy<IRestResponse> CircuitBreakerPolicy =
-            Policy.HandleResult<IRestResponse>(message => message.StatusCode != System.Net.HttpStatusCode.NotFound && message.StatusCode != System.Net.HttpStatusCode.OK)
-                .CircuitBreaker(5, TimeSpan.FromMinutes(30));
+            Policy.HandleResult<IRestResponse>(message => message.StatusCode != System.Net.HttpStatusCode.OK)
+                .CircuitBreaker(2, TimeSpan.FromMinutes(5));
 
-        public IResult<List<Category>> GetCategories(string url)
+        public IDataResult<List<Category>> GetCategories()
         {
             if (CircuitBreakerPolicy.CircuitState == CircuitState.Open)
             {
-                throw new Exception(Messages.ServiceUnavailable);
+                System.Diagnostics.Debug.WriteLine("if circuit braker (servise ulaşılmadı  yada hata veriyor)");
+                return new ErrorDataResult<List<Category>>(new List<Category>(), "SERVise ulaşılamıyor");
             }
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = CircuitBreakerPolicy.Execute(() => client.Execute(request));
-            if (!response.IsSuccessful && string.IsNullOrEmpty(response.Content))
+            try
             {
-                System.Diagnostics.Debug.WriteLine(Messages.Unsuccesfull);
-            }
-           return  JsonConvert.DeserializeObject<Result<List<Category>>>(response.Content);
-          
-        }
-      
+                var client = new RestSharp.RestClient(ServicePath.ibbHal);
+                client.Timeout = 2000; // 2 second
+                var requestGetCategory = new RestSharp.RestRequest(
+                    $"api/HalManager/getCategories",
+                    Method.GET);
 
-    }
-            
-        
+                IRestResponse responseCategory = CircuitBreakerPolicy.Execute(() => client.Execute(requestGetCategory));
+                if (responseCategory.IsSuccessful && !string.IsNullOrEmpty(responseCategory.Content))
+                {
+                    var a = JsonConvert.DeserializeObject<ResponseCategory>(responseCategory.Content);
+                    return new SuccessDataResult<List<Category>>(a.Results);
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("catch");
+            }
+            return new ErrorDataResult<List<Category>>(new List<Category>(), "Boş");
+        }
+    }   
 }
 
      

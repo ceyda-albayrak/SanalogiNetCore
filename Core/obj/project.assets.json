@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Core\\Core.csproj",
+      "projectPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\ceyda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ceyda\\source\\repos\\SanalogiNetCore\\Core\\obj\\",
+      "outputPath": "C:\\Users\\ceyda\\Downloads\\SanalogiNetCore\\SanalogiNetCore\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ceyda\\AppData\\Roaming\\NuGet\\NuGet.Config",
